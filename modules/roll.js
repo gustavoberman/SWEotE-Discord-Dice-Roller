@@ -36,28 +36,23 @@ function initdiceResult() {
             green: [],
             blue: [],
             red: [],
-            purple: [],
             black: [],
             white: [],
-            success: [],
-            advantage: [],
-            triumph: [],
-            failure: [],
-            threat: [],
-            despair: [],
-            lightpip: [],
-            darkpip: []
+            hit: [],
+            surge: [],
+            evade: [],
+            block: [],
+            dodge: [],
+            distance: []
         },
         results: {
             face: '',
-            success: 0,
-            advantage: 0,
-            triumph: 0,
-            failure: 0,
-            threat: 0,
-            despair: 0,
-            lightpip: 0,
-            darkpip: 0
+            distance: 0,
+            hit: 0,
+            surge: 0,
+            evade: 0,
+            block: 0,
+            dodge: 0
         }
     };
 }
@@ -95,90 +90,54 @@ function processType(message, params) {
             switch (die) {
                 case 'yellow':
                 case 'y':
-                case 'proficiency':
-                case 'pro':
                     finalOrder.push('yellow');
                     break;
                 case 'green':
                 case 'g':
-                case 'ability':
-                case 'a':
                     finalOrder.push('green');
                     break;
                 case 'blue':
                 case 'b':
-                case 'boost':
-                case 'boo':
                     finalOrder.push('blue');
                     break;
                 case 'red':
                 case 'r':
-                case 'challenge':
-                case 'c':
                     finalOrder.push('red');
-                    break;
-                case 'purple':
-                case 'p':
-                case 'difficulty':
-                case 'd':
-                    finalOrder.push('purple');
                     break;
                 case 'black':
                 case 'blk':
                 case 'k':
-                case 's':
-                case 'sb':
-                case 'setback':
                     finalOrder.push('black');
                     break;
                 case 'white':
                 case 'w':
-                case 'force':
-                case 'f':
                     finalOrder.push('white');
                     break;
-                case 'success':
-                case 'suc':
-                case '*':
-                    finalOrder.push('success');
+                case 'hit':
+                case 'h':
+                    finalOrder.push('hit');
                     break;
-                case 'advantage':
-                case 'adv':
-                case 'v':
-                    finalOrder.push('advantage');
+                case 'surge':
+                case 's':
+                    finalOrder.push('surge');
                     break;
-                case 'triumph':
-                case 'tri':
-                case '!':
-                    finalOrder.push('triumph');
+                case 'evade':
+                case 'e':
+                    finalOrder.push('evade');
                     break;
-                case 'failure':
-                case 'fail':
-                case '-':
-                    finalOrder.push('failure');
+                case 'block':
+                case 'k':
+                    finalOrder.push('block');
                     break;
-                case 'threat':
-                case 'thr':
-                case 't':
-                    finalOrder.push('threat');
+                case 'dodge':
+                case 'd':
+                    finalOrder.push('dodge');
                     break;
-                case 'despair':
-                case 'des':
-                case '$':
-                    finalOrder.push('despair');
+                case 'distance':
+                case 'x':
+                    finalOrder.push('distance');
                     break;
-                case 'lightside':
-                case 'lightpip':
-                case 'light':
-                case 'l':
-                    finalOrder.push('lightpip');
-                    break;
-                case 'darkside':
-                case 'darkpip':
-                case 'dark':
-                case 'n':
-                    finalOrder.push('darkpip');
-                    break;
+
                 default:
                     break;
             }
@@ -194,55 +153,47 @@ function rollDice(die) {
     return dice(Object.keys(diceFaces[die]).length);
 }
 
+
 async function countSymbols(diceResult, message, bot, desc, channelEmoji) {
     return new Promise(resolve => {
         diceResult.results = {
             face: '',
-            success: 0,
-            advantage: 0,
-            triumph: 0,
-            failure: 0,
-            threat: 0,
-            despair: 0,
-            lightpip: 0,
-            darkpip: 0
+            hit: 0,
+            surge: 0,
+            evade: 0,
+            block: 0,
+            dodge: 0,
+            distance: 0
         };
         Object.keys(diceResult.roll).forEach((color) => {
             diceResult.roll[color].forEach((number) => {
                 let face = diceFaces[color][number].face;
+                debugger;
                 for (let i = 0; face.length > i; i++) {
                     switch (face[i]) {
+                        case 'h':
+                            diceResult.results.hit++;
+                            break;
                         case 's':
-                            diceResult.results.success++;
+                            diceResult.results.surge++;
                             break;
-                        case 'a':
-                            diceResult.results.advantage++;
+                        case 'e':
+                            diceResult.results.evade++;
                             break;
-                        case 'r':
-                            diceResult.results.triumph++;
-                            diceResult.results.success++;
-                            break;
-                        case 'f':
-                            diceResult.results.failure++;
-                            break;
-                        case 't':
-                            diceResult.results.threat++;
+                        case 'b':
+                            diceResult.results.block++;
                             break;
                         case 'd':
-                            diceResult.results.despair++;
-                            diceResult.results.failure++;
+                            diceResult.results.dodge++;
                             break;
-                        case 'l':
-                            diceResult.results.lightpip++;
-                            break;
-                        case 'n':
-                            diceResult.results.darkpip++;
+                        case 'x':
+                            diceResult.results.distance++;
                             break;
                         default:
                             break;
                     }
                 }
-                if (color === 'success' || color === 'advantage' || color === 'triumph' || color === 'failure' || color === 'threat' || color === 'despair' || color === 'lightpip' || color === 'darkpip') face = '';
+                if (color === 'hit' || color === 'surge' || color === 'evade' || color === 'block' || color === 'dodge' || color === 'distance') face = '';
                 diceResult.results.face += printEmoji(`${color}${face}`, bot, channelEmoji);
             });
         });
@@ -263,14 +214,13 @@ function printResults(diceResult, message, bot, desc, channelEmoji) {
     }
     //creates finalCount by cancelling results
     let finalCount = {};
-    if (diceResult.success > diceResult.failure) finalCount.success = diceResult.success - diceResult.failure;
-    if (diceResult.failure > diceResult.success) finalCount.failure = diceResult.failure - diceResult.success;
-    if (diceResult.advantage > diceResult.threat) finalCount.advantage = diceResult.advantage - diceResult.threat;
-    if (diceResult.threat > diceResult.advantage) finalCount.threat = diceResult.threat - diceResult.advantage;
-    if (diceResult.triumph > 0) finalCount.triumph = diceResult.triumph;
-    if (diceResult.despair > 0) finalCount.despair = diceResult.despair;
-    if (diceResult.lightpip > 0) finalCount.lightpip = diceResult.lightpip;
-    if (diceResult.darkpip > 0) finalCount.darkpip = diceResult.darkpip;
+    if (diceResult.hit > 0) finalCount.hit = diceResult.hit;
+    if (diceResult.surge > 0) finalCount.surge = diceResult.surge;
+    if (diceResult.dodge > 0) finalCount.dodge = diceResult.dodge;
+    if (diceResult.evade > 0) finalCount.evade = diceResult.evade;
+    if (diceResult.block > 0) finalCount.block = diceResult.block;
+    if (diceResult.distance > 0) finalCount.distance = diceResult.distance;
+    
 
     //prints finalCount
     Object.keys(finalCount).forEach((symbol) => {
