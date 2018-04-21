@@ -97,60 +97,14 @@ bot.on("message", async message => {
         case 'ver':
             message.channel.send(`${bot.user.username}: version: ${functions.version}`);
             break;
-        //Character Tracker
-        case 'char':
-            functions.char(bot, message, params, channelEmoji);
-            break;
-        // help module
+       // help module
         case 'help':
             functions.help(bot, message, params);
-            break;
-        case 'gleepglop':
-        case 'species':
-            functions.gleepglop(bot, message, params);
-            break;
-        case 'polyhedral':
-            functions.polyhedral(sides, params, message);
-            break;
-        case 'poly':
-            functions.poly(params, message);
-            break;
-        case 'crit':
-            functions.crit(bot, message, params);
-            break;
-        //!shipcrit command
-        case 'shipcrit':
-            functions.shipcrit(bot, message, params);
-            break;
-        //Destiny Point Module
-        case 'destiny':
-        case 'd':
-        case 'story':
-        case 's':
-            functions.destiny(bot, message, params, channelEmoji);
             break;
         // Roll the dice command
         case 'roll':
         case 'r':
             functions.roll(bot, message, params, channelEmoji, desc).roll;
-            break;
-        case 'reroll':
-        case 'rr':
-            functions.reroll(bot, message, params, channelEmoji);
-            break;
-        case 'initiative':
-        case 'init':
-        case 'i':
-            functions.initiative(bot, message, params, channelEmoji);
-            break;
-        case 'obligation':
-        case 'o':
-            functions.obligation(bot, message);
-            break;
-        case 'swrpg':
-        case 'genesys':
-            functions.writeData(bot, message, 'channelEmoji', command);
-            message.channel.send(`${bot.user.username} will now use ${command} dice`);
             break;
     }
     if (message.author.id === functions.config.adminID) {
