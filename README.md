@@ -6,12 +6,13 @@ Star Wars: Imperial Assault and its expansions are © and TM Fantasy Flight Game
 
 A Discord Bot Companion for Star Wars Imperial Assault
 
-#Invite Lobot!!
-Lobot is my working SWIA-Discord-Dice-Roller. To invite it to your server: https://discordapp.com/api/oauth2/authorize?client_id=435078590149689344&permissions=262144&scope=bot
+# Invite Lobot!!
+Lobot is my working SWIA-Discord-Dice-Roller. [Invite](https://discordapp.com/api/oauth2/authorize?client_id=435078590149689344&permissions=262144&scope=bot) it to your server!
 
-#Usage
+# Usage
 Commands:
 - !roll   rolls any combination of IA dice and returns totals
+- !r      rolls any combination of IA dice and returns totals
 
   - You may add " " at the end of the line to give the roll a description
 
@@ -29,13 +30,14 @@ Commands:
   EXAMPLES
       - !roll yyyggbbk "Blast Him!"
       - !roll 3y 2g 2b 1k "Delusions of Grandeur"
+      - !r ryk "Diala says: Take this bucket head!"
 
 
 - !help          Type '!help topic for further information'
 
 
 
-#Installation and Setup
+# Installation and Setup
 
 1. First you will need to have NodeJS installed on your machine. You can find the latest version [here](https://nodejs.org/en/)
 2. Next create a discord account for your bot. You can do this [here](https://discordapp.com/developers/applications/me)
@@ -74,15 +76,15 @@ Commands:
 13. upload custom emoji from emoji folder to the server.  https://support.discordapp.com/hc/en-us/articles/207619737-Adding-Emoji-Magic
 13. Your bot is now configured and ready to launch.
 
-#Running the bot
+# Running the bot
 
 To run the bot, Just execute the file "start.bat" on a windows or "start.command" on mac.
 
-#Updating the bot
+# pdating the bot
 
 To update the bot, Just execute the file "UPDATE.bat" on a windows or "UPDATE.command" on mac. Your config.js file will be backed up and restored automatically
 
-#Configuration File config.js
+# Configuration File config.js
 
   config.js has properties
 
@@ -105,7 +107,7 @@ To update the bot, Just execute the file "UPDATE.bat" on a windows or "UPDATE.co
     - server ID for SWIA Dice emoji
 
 
-#Amazon EC2 install
+# Amazon EC2 install
 
   1.  Connect to your ubuntu Linux instance using SSH.
 
