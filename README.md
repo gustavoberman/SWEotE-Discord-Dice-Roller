@@ -6,6 +6,9 @@ Star Wars: Imperial Assault and its expansions are © and TM Fantasy Flight Game
 
 A Discord Bot Companion for Star Wars Imperial Assault
 
+#Invite Lobot!!
+Lobot is my working SWIA-Discord-Dice-Roller. To invite it to your server: https://discordapp.com/api/oauth2/authorize?client_id=435078590149689344&permissions=262144&scope=bot
+
 #Usage
 Commands:
 - !roll   rolls any combination of IA dice and returns totals
