@@ -9,6 +9,9 @@ A Discord Bot Companion for Star Wars Imperial Assault
 # Invite Lobot!!
 Lobot is my working SWIA-Discord-Dice-Roller. [Invite](https://discordapp.com/api/oauth2/authorize?client_id=435078590149689344&permissions=262144&scope=bot) it to your server!
 
+![alt text](sampleRoll.png "Sample roll")
+
+
 # Usage
 Commands:
 - !roll   rolls any combination of IA dice and returns totals
@@ -28,9 +31,10 @@ Commands:
     - note: if you use the !roll yyyggbbk method you must use the single character dice identifiers
 
   EXAMPLES
-      - !roll yyyggbbk "Blast Him!"
-      - !roll 3y 2g 2b 1k "Delusions of Grandeur"
-      - !r ryk "Diala says: Take this bucket head!"
+  
+  - !roll yyyggbbk "Blast Him!"
+  - !roll 3y 2g 2b 1k "Delusions of Grandeur"
+  - !r ryk "Diala says: Take this bucket head!"
 
 
 - !help          Type '!help topic for further information'
